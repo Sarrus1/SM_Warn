@@ -1,6 +1,7 @@
 #include <sourcemod>
 #include <sdktools>
 #include <adminmenu>
+#include <colorvariables>
 #pragma newdecls required
 #pragma semicolon 1
 
@@ -43,6 +44,8 @@ char pathwarn[PLATFORM_MAX_PATH],
 	pathunwarn[PLATFORM_MAX_PATH],
 	pathresetwarn[PLATFORM_MAX_PATH],
 	pathagree[PLATFORM_MAX_PATH];
+
+char MSG[64];
 
 // Store info for natives
 int g_iWarnings[MAXPLAYERS+1] = -1;
@@ -117,6 +120,8 @@ public void OnPluginStart()
 	{
 		OnAdminMenuReady(topmenu);
 	}
+
+	Format(MSG, sizeof(MSG), "%t", "Chat Prefix");
 }
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
@@ -245,9 +250,7 @@ public void OnMapStart()
 public void SQL_OnConnect(Handle owner, Handle hndl, const char[] error, any data)
 {
 	if (hndl == INVALID_HANDLE)
-	{
 		SetFailState("[SM warn] Database failure: %s", error);
-	}
 	else
 	{
 		hDatabase = hndl;
@@ -512,23 +515,23 @@ public void SQL_WarnPlayer(Handle owner, Handle hndl, const char[] error, any da
 			case 1:
 			{
 				// Aww, i want to punish them, aaarr
-				PrintToChat(target, "\x03[Warn] \x01%t", "warn_message");
+				CPrintToChat(target, "%s%t", MSG, "warn_message");
 			}
 			case 2:
 			{
 				SlapPlayer(target, GetConVarInt(g_cVar_slapdamage), true);
-				PrintToChat(target, "[\x03[Warn] \x01%t", "warn_message");
+				CPrintToChat(target, "%s%t", MSG, "warn_message");
 			}
 			case 3:
 			{
 				ForcePlayerSuicide(target);
-				PrintToChat(target, "\x03[Warn] \x01%t", "warn_message");
+				CPrintToChat(target, "%s%t", MSG, "warn_message");
 			}
 			case 4:
 			{
 				SetEntityMoveType(target, MOVETYPE_NONE);
 				BuildAgreement(target);
-				PrintToChat(target, "\x03[Warn] \x01%t", "warn_message");
+				CPrintToChat(target, "%s%t", MSG, "warn_message");
 			}
 			case 5:
 			{
@@ -662,7 +665,7 @@ public void SQL_UnWarnPlayer(Handle owner, Handle hndl, const char[] error, any 
 	}
 	else
 	{
-		PrintToChat(client, "\x03[Warn] \x01%t", "warn_notwarned", target);
+		CPrintToChat(client, "%s%t", MSG, "warn_notwarned", target);
 	}
 }
 
@@ -773,7 +776,7 @@ public void SQL_ResetWarnPlayer(Handle owner, Handle hndl, const char[] error, a
 	}
 	else
 	{
-		PrintToChat(client, "\x03[Warn] \x01%t", "warn_notwarned", target);
+		CPrintToChat(client, "%s%t", MSG, "warn_notwarned", target);
 	}
 }
 
@@ -832,11 +835,11 @@ public void SQL_CheckPlayer(Handle owner, Handle hndl, const char[] error, any d
 	
 	if (SQL_GetRowCount(hndl) == 0)
 	{
-		PrintToChat(client, "\x03[Warn] \x01%t", "warn_notwarned", target);
+		CPrintToChat(client, "%s%t", MSG, "warn_notwarned", target);
 		return;
 	}
 	
-	PrintToChat(client, "\x03[Warn] \x01Check console for output");
+	CPrintToChat(client, "%sCheck console for output", MSG);
 	
 	int warnings = SQL_GetRowCount(hndl);
 	char nickname[15], admin[15], Reason[32], Date[32], Expired[4], hostname[254];
@@ -1051,11 +1054,11 @@ public int MenuHandler_Warn(Menu menu, MenuAction action, int param1, int param2
 
 		if ((target = GetClientOfUserId(userid)) == 0)
 		{
-			PrintToChat(param1, "\x03[Warn] \x01%t", "warn_notavailable");
+			CPrintToChat(param1, "%s%t", MSG, "warn_notavailable");
 		}
 		else if (!CanUserTarget(param1, target))
 		{
-			PrintToChat(param1, "\x03[Warn] \x01%t", "warn_canttarget");
+			CPrintToChat(param1, "%s%t", MSG, "warn_canttarget");
 		}
 		else
 		{
@@ -1089,11 +1092,11 @@ public int MenuHandler_UnWarn(Menu menu, MenuAction action, int param1, int para
 
 		if ((target = GetClientOfUserId(userid)) == 0)
 		{
-			PrintToChat(param1, "\x03[Warn] \x01%t", "warn_notavailable");
+			CPrintToChat(param1, "%s%t", MSG, "warn_notavailable");
 		}
 		else if (!CanUserTarget(param1, target))
 		{
-			PrintToChat(param1, "\x03[Warn] \x01%t", "warn_canttarget");
+			CPrintToChat(param1, "%s%t", MSG, "warn_canttarget");
 		}
 		else
 		{
@@ -1127,11 +1130,11 @@ public int MenuHandler_CheckWarn(Handle menu, MenuAction action, int param1, int
 
 		if ((target = GetClientOfUserId(userid)) == 0)
 		{
-			PrintToChat(param1, "\x03[Warn] \x01%t", "warn_notavailable");
+			CPrintToChat(param1, "%s%t", MSG, "warn_notavailable");
 		}
 		else if (!CanUserTarget(param1, target))
 		{
-			PrintToChat(param1, "\x03[Warn] \x01%t", "warn_canttarget");
+			CPrintToChat(param1, "%s%t", MSG, "warn_canttarget");
 		}
 		else
 		{
@@ -1164,11 +1167,11 @@ public int MenuHandler_ResetWarn(Menu menu, MenuAction action, int param1, int p
 
 		if ((target = GetClientOfUserId(userid)) == 0)
 		{
-			PrintToChat(param1, "\x03[Warn] \x01%t", "warn_notavailable");
+			CPrintToChat(param1, "%s%t", MSG, "warn_notavailable");
 		}
 		else if (!CanUserTarget(param1, target))
 		{
-			PrintToChat(param1, "\x03[Warn] \x01%t", "warn_canttarget");
+			CPrintToChat(param1, "%s%t", MSG, "warn_canttarget");
 		}
 		else
 		{
@@ -1377,7 +1380,7 @@ public int MenuHandler_WarnAgreement(Menu menu, MenuAction action, int param1, i
 	{
 		if(param2 == 1)
 		{
-			PrintToChat(param1, "\x03[Warn] \x01%t", "warn_agreement_message");
+			CPrintToChat(param1, "%s%t", MSG, "warn_agreement_message");
 			SetEntityMoveType(param1, MOVETYPE_WALK);
 		}
 	}
@@ -1393,7 +1396,7 @@ public void PrintToAdmins(const char[] format, any ...)
 		{
 			VFormat(g_Buffer, sizeof(g_Buffer), format, 2);
 			
-			PrintToChat(i, "%s", g_Buffer);
+			CPrintToChat(i, "%s", g_Buffer);
 		}
 	}
 }

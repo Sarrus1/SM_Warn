@@ -1,5 +1,15 @@
 "Phrases"
 {
+	"Chat Prefix"
+	{
+		"en"		"{green}[Warn]"
+		"en"		"{green}[Warn]"
+		"fr"		"{green}[Warn]"
+		"de"		"{green}[Warn]"
+		"sv"		"{green}[Warn]"
+		"nl"		"{green}[Warn]"
+	}
+
 	"warn_warnconnect"
 	{
 		"#format"	"{1:N},{2:i}"
