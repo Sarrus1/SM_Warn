@@ -13,11 +13,11 @@
 	"warn_warnconnect"
 	{
 		"#format"	"{1:N},{2:i}"
-		"en"		"{1} has connected with ({2}) Prior Warnings."
-		"fr"		"{1} connecte avec {2} avertissement(s) en memoire"
-		"de"		"{1} hat sich mit {2} vergangenen Warnungen verbunden"
-		"sv"		"{1} anslöt med {2} föregående varning(ar)"
-		"nl"		"{1} verbond met {2} vorige waarschuwing(en)"
+		"en"		"{lime}{1} {gold}has connected with {violet}{2}{gold} Prior Warnings."
+		"fr"		"{lime}{1} {gold}connecte avec {violet}{2}{gold} avertissement(s) en memoire"
+		"de"		"{lime}{1} {gold}hat sich mit {violet}{2}{gold} vergangenen Warnungen verbunden"
+		"sv"		"{lime}{1} {gold}anslöt med {violet}{2}{gold} föregående varning(ar)"
+		"nl"		"{lime}{1} {gold}verbond met {violet}{2}{gold} vorige waarschuwing(en)"
 	}
 	
 	"warn_arguments"
@@ -33,11 +33,11 @@
 	"warn_warnplayer"
 	{
 		"#format"	"{1:N},{2:s}"
-		"en"		"issued a warning on {1} with reason: {2}"
-		"fr"		"a donne un avertissement a {1} pour motif: {2}"
-		"de"		"{1} wurde mit gewarnt mit dem Grund: {2}"
-		"sv"		"utfärdade en varning på {1} med anledningen: {2}"
-		"nl"		"heeft een waarschuwing aan {1} gegegeven met de reden: {2}"
+		"en"		"{gold}issued a warning on {lime}{1} {gold}with reason: {violet}{2}"
+		"fr"		"{gold}a donne un avertissement a {lime}{1} {gold}pour motif: {violet}{2}"
+		"de"		"{lime}{1} {gold}wurde mit gewarnt mit dem Grund: {violet}{2}"
+		"sv"		"{gold}utfärdade en varning på {lime}{1} {gold}med anledningen: {violet}{2}"
+		"nl"		"{gold}heeft een waarschuwing aan {lime}{1} {gold}gegegeven met de reden: {violet}{2}"
 	}
 	
 	"warn_warnlog"
@@ -154,38 +154,38 @@
 	"warn_notwarned"
 	{
 		"#format"	"{1:N}"
-		"en"		"{1} has not been warned before."
-		"fr"        "{1} n'a encore jamais ete averti."
-		"de"		"{1} wurde bisher nicht gewarnt."
-		"sv"		"{1} har inte varnats förut."
-		"nl"		"{1} heeft geen eerde waarschuwing gehad."
+		"en"		"{1} {gold}has not been warned before."
+		"fr"    "{1} {gold}n'a encore jamais ete averti."
+		"de"		"{1} {gold}wurde bisher nicht gewarnt."
+		"sv"		"{1} {gold}har inte varnats förut."
+		"nl"		"{1} {gold}heeft geen eerde waarschuwing gehad."
 	}
 	
 	"warn_notavailable"
 	{
 		"#format"	""
-		"en"		"Player is no longer available."
-		"fr"        "Ce joueur n'est plus accessible."
-		"de"		"Spieler ist nicht mehr verfügbar."
-		"sv"		"Spelaren är inte längre tillgänglig."
-		"nl"		"Speler is niet meer beschikbaar."
+		"en"		"{gold}Player is no longer available."
+		"fr"    "{gold}Ce joueur n'est plus accessible."
+		"de"		"{gold}Spieler ist nicht mehr verfügbar."
+		"sv"		"{gold}Spelaren är inte längre tillgänglig."
+		"nl"		"{gold}Speler is niet meer beschikbaar."
 	}
 	
 	"warn_canttarget"
 	{
 		"#format"	""
-		"en"		"Unable to target player."
-		"fr"        "Impossible de determiner ce joueur."
-		"de"		"Kann Spieler nicht erfassen."
-		"sv"		"Kan inte välja den spelaren."
-		"nl"		"Kan actie niet uitvoeren op speler."
+		"en"		"{gold}Unable to target player."
+		"fr"    "{gold}Impossible de determiner ce joueur."
+		"de"		"{gold}Kann Spieler nicht erfassen."
+		"sv"		"{gold}Kan inte välja den spelaren."
+		"nl"		"{gold}Kan actie niet uitvoeren op speler."
 	}
 	
 	"warn_warn_adminmenu_title"
 	{
 		"#format"	""
 		"en"		"Warn player"
-		"fr"        "Donner un avertissement"
+		"fr"    "Donner un avertissement"
 		"de"		"warne Spieler"
 		"sv"		"Varna spelare"
 		"nl"		"Waarschuw speler"
@@ -275,7 +275,7 @@
 	{
 		"#format"	""
 		"en"		"Usage: sm_checkwarn <#userid|name>"
-		"fr"        "Utilisation: sm_checkwarn <#userid|nom>"
+		"fr"    "Utilisation: sm_checkwarn <#userid|nom>"
 		"de" 		"Benutzung: sm_checkwarn <#userid|name>"
 		"sv"		"Användning: sm_checkwarn <#userid|namn>"
 		"nl"		"Gebruik: sm_checkwarn <#userid|naam>"
@@ -285,9 +285,9 @@
 	{
 		"#format"	"{1:N},{2:i}"
 		"en"		"Player {1} has been warned {2} time(s) before:"
-		"fr"        "Le joueur {1} a deja ete averti {2} fois auparavant:"
+		"fr"    "Le joueur {1} a deja ete averti {2} fois auparavant:"
 		"de" 		"Spieler {1} wurde {2} mal gewarnt:"
-		"sv"        "Spelaren {1} har varnats {2} gånger förut:"
+		"sv"    "Spelaren {1} har varnats {2} gånger förut:"
 		"nl"		"Speler {1} is gewaarschuwd {2} keren voordat:"
 	}
 	
@@ -305,7 +305,7 @@
 	{
 		"#format"	""
 		"en"		"Select player"
-		"fr"        "Selectionner un joueur"
+		"fr"    "Selectionner un joueur"
 		"de"		"Spieler wählen"
 		"sv"		"Välj spelare"
 		"nl"		"Selecteer speler"
@@ -315,7 +315,7 @@
 	{
 		"#format"	""
 		"en"		"Select reason"
-		"fr"        "Choisir un motif"
+		"fr"    "Choisir un motif"
 		"de"		"Grund wählen"
 		"sv"		"Välj anledning"
 		"nl"		"Selecteer reden"
@@ -325,7 +325,7 @@
 	{
 		"#format"	"{1:N},{2:s},{3:s},{4:N},{5:s},{6:s},{7:s}"
 		"en"		"ADMIN (NICK: {1} | ID: {2} | IP: {3}) reseted warnings on PLAYER (NICK: {4} | ID: {5} | IP: {6}) with reason: {7}"
-		"fr"        "ADMIN (PSEUDO: {1} | ID: {2} | IP: {3}) a efface les avertissements du JOUEUR (PSEUDO: {4} | ID: {5} | IP: {6}) pour motif: {7}"
+		"fr"    "ADMIN (PSEUDO: {1} | ID: {2} | IP: {3}) a efface les avertissements du JOUEUR (PSEUDO: {4} | ID: {5} | IP: {6}) pour motif: {7}"
 		"de"		"ADMIN (NICK: {1} | ID: {2} | IP: {3}) hat die Warnungen von Spieler (NICK: {4} | ID: {5} | IP: {6}) mit dem Grund {7} zurückgesetzt"
 		"sv"		"ADMIN (NICK: {1} | ID: {2} | IP: {3}) återställde varningarna på SPELAREN (NICK: {4} | ID: {5} | IP: {6}) med anledningen: {7}"
 		"nl"		"ADMIN (NICK: {1} | ID: {2} | IP: {3}) resetde de waarschuwingen van SPELER (NICK: {4} | ID: {5} | IP: {6}) met de reden: {7}"
@@ -334,11 +334,11 @@
 	"warn_resetplayer"
 	{
 		"#format"	"{1:N},{2:s}"
-		"en"		"reseted {1}'s warnings with reason: {2}"
-		"fr"        "suppression des avertissements de {1} pour motif: {2}"
-		"de"		"{1} Wrnungen wurden zurückgesetzt! Grund: {2}"
-		"sv"		"återställde {1}'s varningar med anleningen: {2}"
-		"nl" 		"resetde {1}'s waarschuwingen met de reden: {2}"
+		"en"		"{gold}reseted {lime}{1}{gold}'s warnings with reason: {2}"
+		"fr"    "{gold}suppression des avertissements de {lime}{1} pour motif: {2}"
+		"de"		"{lime}{1} {gold}Wrnungen wurden zurückgesetzt! Grund: {2}"
+		"sv"		"{gold}återställde {lime}{1}{gold}'s varningar med anleningen: {2}"
+		"nl" 		"{gold}resetde {lime}{1}{gold}'s waarschuwingen met de reden: {2}"
 	}
 	
 	"warn_agreement_title"
