@@ -13,11 +13,11 @@
 	"warn_warnconnect"
 	{
 		"#format"	"{1:N},{2:i}"
-		"en"		"{lime}{1} {gold}has connected with {violet}{2}{gold} Prior Warnings."
-		"fr"		"{lime}{1} {gold}connecte avec {violet}{2}{gold} avertissement(s) en memoire"
-		"de"		"{lime}{1} {gold}hat sich mit {violet}{2}{gold} vergangenen Warnungen verbunden"
-		"sv"		"{lime}{1} {gold}anslöt med {violet}{2}{gold} föregående varning(ar)"
-		"nl"		"{lime}{1} {gold}verbond met {violet}{2}{gold} vorige waarschuwing(en)"
+		"en"		"{lime}{1} {gold}has connected with {orchid}{2}{gold} Prior Warnings."
+		"fr"		"{lime}{1} {gold}connecte avec {orchid}{2}{gold} avertissement(s) en memoire"
+		"de"		"{lime}{1} {gold}hat sich mit {orchid}{2}{gold} vergangenen Warnungen verbunden"
+		"sv"		"{lime}{1} {gold}anslöt med {orchid}{2}{gold} föregående varning(ar)"
+		"nl"		"{lime}{1} {gold}verbond met {orchid}{2}{gold} vorige waarschuwing(en)"
 	}
 	
 	"warn_arguments"
@@ -33,11 +33,11 @@
 	"warn_warnplayer"
 	{
 		"#format"	"{1:N},{2:s}"
-		"en"		"{gold}issued a warning on {lime}{1} {gold}with reason: {violet}{2}"
-		"fr"		"{gold}a donne un avertissement a {lime}{1} {gold}pour motif: {violet}{2}"
-		"de"		"{lime}{1} {gold}wurde mit gewarnt mit dem Grund: {violet}{2}"
-		"sv"		"{gold}utfärdade en varning på {lime}{1} {gold}med anledningen: {violet}{2}"
-		"nl"		"{gold}heeft een waarschuwing aan {lime}{1} {gold}gegegeven met de reden: {violet}{2}"
+		"en"		"{gold}issued a warning on {lime}{1} {gold}with reason: {orchid}{2}"
+		"fr"		"{gold}a donne un avertissement a {lime}{1} {gold}pour motif: {orchid}{2}"
+		"de"		"{lime}{1} {gold}wurde mit gewarnt mit dem Grund: {orchid}{2}"
+		"sv"		"{gold}utfärdade en varning på {lime}{1} {gold}med anledningen: {orchid}{2}"
+		"nl"		"{gold}heeft een waarschuwing aan {lime}{1} {gold}gegegeven met de reden: {orchid}{2}"
 	}
 	
 	"warn_warnlog"
@@ -83,18 +83,18 @@
 	"warn_message"
 	{
 		"#format"	""
-		"en"		"You have been issued a warning. Follow the rules or further actions will be taken."
-		"fr"		"Tu viens de recevoir un avertissement. Respecte les regles ou des sanctions seront prises."
-		"de"		"Du wurdest verwarnt. Halte Dich an die Regeln, oder weitere Konsequenzen werden gezogen."
-		"sv"		"Du har utfärdats en varning. Följ reglerna eller ytterligare åtgärder kommer att vidtas."
-		"nl"		"Je kreeg een waarschuwing. Volg de regels of meerdere acties zullen worden ondernomen."
+		"en"		"{red}You have been issued a warning. Follow the rules or further actions will be taken."
+		"fr"		"{red}Tu viens de recevoir un avertissement. Respecte les regles ou des sanctions seront prises."
+		"de"		"{red}Du wurdest verwarnt. Halte Dich an die Regeln, oder weitere Konsequenzen werden gezogen."
+		"sv"		"{red}Du har utfärdats en varning. Följ reglerna eller ytterligare åtgärder kommer att vidtas."
+		"nl"		"{red}Je kreeg een waarschuwing. Volg de regels of meerdere acties zullen worden ondernomen."
 	}
 	
 	"warn_punish_kick"
 	{
 		"#format"	"{1:s}"
 		"en"		"You have been kicked for receiving a warning (Reason:{1})"
-		"fr"        "Tu as ete kicke en guise d'avertissement (Motif: {1})"
+		"fr"    "Tu as ete kicke en guise d'avertissement (Motif: {1})"
 		"de"		"Du wurdest gekickt, weil Du eine Warnung erhalten hast"
 		"sv"		"Du har blivit utslängd för att ha mottagit en varning (Anledning: {1})"
 		"nl"		"Je bent gekickt vanwege een waarschuwing (Reden: {1})"

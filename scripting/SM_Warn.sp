@@ -54,7 +54,7 @@ int g_iWarnings[MAXPLAYERS+1] = -1;
 public Plugin myinfo =
 {
 	name = "SM warn",
-	author = "ecca",
+	author = "ecca, updated by Sarrus",
 	description = "Warn players when they are doing something wrong.",
 	version = PLUGIN_VERSION,
 	url = ""
@@ -142,7 +142,7 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnAllPluginsLoaded()
 {
-	if (LibraryExists("sourcebans"))
+	if (LibraryExists("sourcebanspp"))
 	{
 		g_UseSourcebans = true;
 	}
@@ -150,7 +150,7 @@ public void OnAllPluginsLoaded()
 
 public void OnLibraryAdded(const char[] name)
 {
-	if (StrEqual("sourcebans", name))
+	if (StrEqual("sourcebanspp", name))
 	{
 		g_UseSourcebans = true;
 	}
@@ -158,7 +158,7 @@ public void OnLibraryAdded(const char[] name)
 
 public void OnLibraryRemoved(const char[] name)
 {
-	if (StrEqual("sourcebans", name))
+	if (StrEqual("sourcebanspp", name))
 	{
 		g_UseSourcebans = false;
 	}
@@ -176,11 +176,9 @@ public int Native_WarnPlayer(Handle plugin, int numParams)
 	GetNativeStringLength(2, len);
 	
 	if (len <= 0)
-	{
 		return;
-	}
 	
-	char[] Reason = "";
+	char[] Reason = new char[len + 1];
 	GetNativeString(2, Reason, len+1);
 	
 	ServerCommand("sm_warn #%d \"%s\"", GetClientUserId(client), Reason);
@@ -194,11 +192,9 @@ public int Native_UnWarnPlayer(Handle plugin, int numParams)
 	GetNativeStringLength(2, len);
 	
 	if (len <= 0)
-	{
 		return;
-	}
 	
-	char[] Reason = "";
+	char[] Reason = new char[len + 1];
 	GetNativeString(2, Reason, len+1);
 	
 	ServerCommand("sm_unwarn #%d \"%s\"", GetClientUserId(client), Reason);
@@ -212,11 +208,9 @@ public int Native_ResetWarnPlayer(Handle plugin, int numParams)
 	GetNativeStringLength(2, len);
 	
 	if (len <= 0)
-	{
 		return;
-	}
 	
-	char[] Reason = "";
+	char[] Reason = new char[len + 1];
 	GetNativeString(2, Reason, len+1);
 	
 	ServerCommand("sm_resetwarn #%d \"%s\"", GetClientUserId(client), Reason);
@@ -373,7 +367,7 @@ public Action Command_WarnPlayer(int client, int args)
 
 		SQL_TQuery(hDatabase, SQL_WarnPlayer, dbQuery, datapack);
 		
-		ShowActivity2(client, "\x03[Warn] \x01", "%t", "warn_warnplayer", target, reason);
+		CShowActivity2(client, MSG, "%t", "warn_warnplayer", target, reason);
 		
 		if(GetConVarBool(g_cVar_LogWarnings))
 		{
@@ -656,7 +650,7 @@ public void SQL_UnWarnPlayer(Handle owner, Handle hndl, const char[] error, any 
 
 		SQL_TQuery(hDatabase, SQL_EmptyCallback, dbQuery);
 		
-		ShowActivity2(client, "\x03[Warn] \x01", "%t", "warn_unwarn_player", target, reason);
+		CShowActivity2(client, MSG, "%t", "warn_unwarn_player", target, reason);
 		
 		if(GetConVarBool(g_cVar_LogWarnings))
 		{
@@ -753,7 +747,7 @@ public void SQL_ResetWarnPlayer(Handle owner, Handle hndl, const char[] error, a
 		Format(dbQuery, sizeof(dbQuery), "DELETE FROM smwarn WHERE tsteamid = '%s'", tsteamid);
 		SQL_TQuery(hDatabase, SQL_EmptyCallback, dbQuery);
 		
-		ShowActivity2(client, "\x03[Warn] \x01", "%t", "warn_resetplayer", target, reason);
+		CShowActivity2(client, MSG, "%t", "warn_resetplayer", target, reason);
 
 		char csteamid[32], cip[32], tip[32];
 		
