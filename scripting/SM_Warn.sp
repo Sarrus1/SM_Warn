@@ -117,9 +117,7 @@ public void OnPluginStart()
 	Handle topmenu;
 	
 	if (LibraryExists("adminmenu") && ((topmenu = GetAdminTopMenu()) != INVALID_HANDLE))
-	{
 		OnAdminMenuReady(topmenu);
-	}
 
 	Format(MSG, sizeof(MSG), "%t", "Chat Prefix");
 }
@@ -142,30 +140,28 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnAllPluginsLoaded()
 {
-	if (LibraryExists("sourcebanspp"))
+	if (LibraryExists("sourcebans++"))
 	{
+		PrintToServer("Found sourcebans");
 		g_UseSourcebans = true;
 	}
 }
 
 public void OnLibraryAdded(const char[] name)
 {
-	if (StrEqual("sourcebanspp", name))
+	if (StrEqual("sourcebans++", name))
 	{
+		PrintToServer("Found sourcebans");
 		g_UseSourcebans = true;
 	}
 }
 
 public void OnLibraryRemoved(const char[] name)
 {
-	if (StrEqual("sourcebanspp", name))
-	{
+	if (StrEqual("sourcebans++", name))
 		g_UseSourcebans = false;
-	}
 	else if(StrEqual(name, "adminmenu")) 
-	{
 		hAdminMenu = INVALID_HANDLE;
-	}
 }
 
 public int Native_WarnPlayer(Handle plugin, int numParams)
@@ -256,13 +252,9 @@ public void SQL_OnConnect(Handle owner, Handle hndl, const char[] error, any dat
 		int UseMySQL = StrEqual(buffer, "mysql", false) ? 1 : 0;
 
 		if (UseMySQL == 1)
-		{
 			Format(buffer, sizeof(buffer), "CREATE TABLE IF NOT EXISTS `smwarn` (`target` VARCHAR(64), `tsteamid` VARCHAR(32), `admin` VARCHAR(64), `asteamid` VARCHAR(32), `reason` VARCHAR(64), `time` VARCHAR(64), `expired` VARCHAR(1), `hostname` VARCHAR(254))");
-		}
 		else
-		{
 			Format(buffer, sizeof(buffer), "CREATE TABLE IF NOT EXISTS smwarn (target TEXT, tsteamid TEXT, admin TEXT, asteamid TEXT, reason TEXT, time TEXT, expired TEXT, hostname TEXT);");
-		}
 		
 		SQL_TQuery(hDatabase, SQL_EmptyCallback, buffer);
 		
@@ -308,9 +300,7 @@ public void SQL_CheckWarnings(Handle owner, Handle hndl, const char[] error, any
 		g_iWarnings[client] = SQL_GetRowCount(hndl);
 		
 		if (GetConVarBool(g_cVar_PrintToAdmins))
-		{
-			PrintToAdmins("\x03[Warn] \x01%t", "warn_warnconnect", client, g_iWarnings[client]);
-		}
+			PrintToAdmins("%s%t", MSG, "warn_warnconnect", client, g_iWarnings[client]);
 	}
 }
 
@@ -318,7 +308,7 @@ public Action Command_WarnPlayer(int client, int args)
 {
 	if (args < 2)
 	{
-		ReplyToCommand(client, "\x03[Warn] \x01%t", "warn_arguments");
+		ReplyToCommand(client, "%s%t", MSG, "warn_arguments");
 		return Plugin_Handled;
 	}
 	
@@ -558,7 +548,7 @@ public Action Command_UnWarnPlayer(int client, int args)
 {
 	if (args < 2)
 	{
-		ReplyToCommand(client, "\x03[Warn] \x01%t", "warn_arguments2");
+		ReplyToCommand(client, "%s%t", MSG, "warn_arguments2");
 		return Plugin_Handled;
 	}
 	
@@ -667,13 +657,13 @@ public Action Command_WarnReset(int client, int args)
 {
 	if(!GetConVarBool(g_cVar_reset_warnings))
 	{
-		ReplyToCommand(client, "\x03[Warn] \x01Command has been disabled");
+		ReplyToCommand(client, "%sCommand has been disabled", MSG);
 		return Plugin_Handled;
 	}
 	
 	if (args < 2)
 	{
-		ReplyToCommand(client, "\x03[Warn] \x01%t", "warn_arguments4");
+		ReplyToCommand(client, "%s%t", "warn_arguments4", MSG);
 		return Plugin_Handled;
 	}
 	
@@ -784,7 +774,7 @@ public Action Command_CheckWarnPlayer(int client, int args)
 	
 	if (args < 1)
 	{
-		ReplyToCommand(client, "\x03[Warn] \x01%t", "warn_arguments3");
+		ReplyToCommand(client, "%s%t", "warn_arguments3", MSG);
 		return Plugin_Handled;
 	}
 	
