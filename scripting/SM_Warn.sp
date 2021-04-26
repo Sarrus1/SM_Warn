@@ -252,7 +252,7 @@ public void SQL_OnConnect(Handle owner, Handle hndl, const char[] error, any dat
 		int UseMySQL = StrEqual(buffer, "mysql", false) ? 1 : 0;
 
 		if (UseMySQL == 1)
-			Format(buffer, sizeof(buffer), "CREATE TABLE IF NOT EXISTS `smwarn` (`target` VARCHAR(64), `tsteamid` VARCHAR(32), `admin` VARCHAR(64), `asteamid` VARCHAR(32), `reason` VARCHAR(64), `time` VARCHAR(64), `expired` VARCHAR(1), `hostname` VARCHAR(254))");
+			Format(buffer, sizeof(buffer), "CREATE TABLE IF NOT EXISTS `smwarn` (`target` VARCHAR(64), `tsteamid` VARCHAR(32), `admin` VARCHAR(64), `asteamid` VARCHAR(32), `reason` VARCHAR(64), `time` VARCHAR(64), `expired` VARCHAR(1), `hostname` VARCHAR(254)) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
 		else
 			Format(buffer, sizeof(buffer), "CREATE TABLE IF NOT EXISTS smwarn (target TEXT, tsteamid TEXT, admin TEXT, asteamid TEXT, reason TEXT, time TEXT, expired TEXT, hostname TEXT);");
 		
@@ -261,7 +261,7 @@ public void SQL_OnConnect(Handle owner, Handle hndl, const char[] error, any dat
 		if (UseMySQL == 1)
 		{
 			char dbQuery[254];
-			Format(dbQuery, sizeof(dbQuery), "SET NAMES 'utf8'");
+			Format(dbQuery, sizeof(dbQuery), "ALTER TABLE `smwarn` CONVERT TO CHARACTER SET 'utf8mb4_unicode_ci'");
 			
 			SQL_TQuery(hDatabase, SQL_EmptyCallback, dbQuery);
 		}
